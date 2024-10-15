@@ -1,4 +1,3 @@
 export const count = (target, list) => {
-    // TODO: implement this
-    return 0;
+    return list.filter(itm => itm === target).length;
 }
