@@ -1,6 +1,6 @@
 name: Autograding Tests
 'on':
-- workflow_dispatch
+- push
 - repository_dispatch
 permissions:
   checks: write
@@ -22,9 +22,19 @@ jobs:
         command: npm test -i src/sanity.test.ts
         timeout: 10
         max-score: 10
+    - name: Count
+      id: count
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Count
+        setup-command: npm install
+        command: npm test count
+        timeout: 10
+        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         SANITY-CHECK_RESULTS: "${{steps.sanity-check.outputs.result}}"
+        COUNT_RESULTS: "${{steps.count.outputs.result}}"
       with:
-        runners: sanity-check
+        runners: sanity-check,count
