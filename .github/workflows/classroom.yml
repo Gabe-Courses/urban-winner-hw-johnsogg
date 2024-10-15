@@ -21,7 +21,7 @@ jobs:
         setup-command: npm install
         command: npm test -i src/sanity.test.ts
         timeout: 10
-        max-score: 10
+        max-score: 50
     - name: Count
       id: count
       uses: classroom-resources/autograding-command-grader@v1
