@@ -31,6 +31,15 @@ jobs:
         command: npm test count
         timeout: 10
         max-score: 10
+    - name: Count
+      id: count
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Count
+        setup-command: npm install
+        command: npm test count
+        timeout: 10
+        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
